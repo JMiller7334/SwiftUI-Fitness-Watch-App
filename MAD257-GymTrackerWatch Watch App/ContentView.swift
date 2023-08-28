@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  MAD257-GymTrackerWatch Watch App
 //
-//  Created by student on 2/23/23.
+//  Created by Jacob Miller on 2/23/23.
 //
 
 import SwiftUI
@@ -55,9 +55,6 @@ struct Workout{
         self.exercises.append(newExercise)
     }
 }
-
-
-
 
 struct ContentView: View {
     
