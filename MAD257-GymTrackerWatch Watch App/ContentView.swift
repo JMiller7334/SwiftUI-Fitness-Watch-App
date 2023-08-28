@@ -62,11 +62,13 @@ struct Workout{
 struct ContentView: View {
     
     //MARK: INIT VARS: variables such as class need to be initialized like below.
+    /**below defines the mock workout that will be run by this app**/
     var benchPress: Exercise
     var deadlift: Exercise
     var testWorkout: Workout
-    init(){
-        self.benchPress = Exercise(Name: "Benchpress", Sets: 3, Reps: [10, 8, 5], Weight: [185, 205, 225], Exertion: ["8", "8", "9"], ExertionType: ["RPE", "RPE", "RPE"], RestMin: [1, 1, 1], RestSec: [0,0,0], Type: "Str")
+    init(){ //init the class
+        /**The workout is configured below with the exercise variable defined above. Normally this could be loaded in from a database.**/
+        self.benchPress = Exercise(Name: "Benchpress", Sets: 3, Reps: [10, 8, 5], Weight: [185, 205, 225], Exertion: ["8", "8", "9"], ExertionType: ["RIR", "RPE", "RPE"], RestMin: [1, 1, 1], RestSec: [0,0,0], Type: "Str")
         
         self.deadlift = Exercise(Name: "Deadlift(Sumo)", Sets: 2, Reps: [2,2], Weight: [327, 350], Exertion: ["9", "9", "9"], ExertionType: ["RPE", "RPE", "RPE"], RestMin: [0, 0, 0], RestSec: [90, 90, 90], Type: "Str")
         
@@ -77,11 +79,10 @@ struct ContentView: View {
    
     
     //MARK: VARS
-    @State var currentRecord = [Exercise]()
-    var pastRecords = [
-        Exercise(Name: "benchpress", Sets: 2, Reps: [10, 8], Weight: [185, 205], Exertion: ["10", "10"], ExertionType: ["RPE", "RPE"], RestMin: [0,0,0], RestSec: [120, 120], Type: "Str")
+    @State var currentRecord = [Exercise]()// a list to hold the data from the current session - this data could then be saved.
+    var pastRecords = [//a mockup past record to display what the user did last time for this workout.
+        Exercise(Name: "benchpress", Sets: 2, Reps: [10, 8], Weight: [185, 205], Exertion: ["10", "10"], ExertionType: ["RIR", "RPE"], RestMin: [0,0,0], RestSec: [120, 120], Type: "Str")
     ]
-    
     
     @State var currentSet = 1
     @State var currentPhase = 0
@@ -105,18 +106,21 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text(phaseTitle)
-            //if statement to set screen elements (THIS IS AWESOME!!!
+            //Screen UI elements are updated from here//
+            /**if statements handle updating the screen elements. Listeners/connection are nested within the elements***/
             if summaryShown {
                 ScrollView{
                     Text(summaryText).padding([.top], 3)
                 }
             } else {
                 HStack{
-                    Picker("3", selection: $input3, content: {
-                        ForEach(0..<10){n in
-                            Text("\(n)").tag(n)
-                        }.pickerStyle(.wheel)
-                    })
+                    if (madeInputs != 3) {
+                        Picker("3", selection: $input3, content: {
+                            ForEach(0..<10){n in
+                                Text("\(n)").tag(n)
+                            }.pickerStyle(.wheel)
+                        })
+                    }
                     Picker("2", selection: $input2, content: {
                         ForEach(0..<10){n in
                             Text("\(n)").tag(n)
@@ -127,25 +131,27 @@ struct ContentView: View {
                             Text("\(n)").tag(n)
                         }.pickerStyle(.wheel)
                     })
-                    
                 }
-
                 
             }
-            
             HStack{
-                Button("QUIT", action: {})
+                Button("QUIT", action: {
+                    onQuitButtonTapped()
+                })
                 Button(buttonConfirmText, action: {
                     onButtonTapped()
                 })
             }.padding([.top], 10)
             
         //works like viewDidLoad() -- this will run my fuction on start up.
-        }.onAppear { self.updateWorkout()}
+        }.onAppear { self.workoutDetails()}
     }
     
-    //MARK: FUNCTION
-    func updateWorkout(){
+    //MARK: FUNCTIONS
+    
+    /*Notes: this updates the display on the screen to show history and summary of set goals for the
+     the current session.*/
+    func workoutDetails(){
         //SET DISPLAY//
         if (currentPhase == 0 || currentPhase == 3 || currentPhase == 1){
             summaryShown = true
@@ -160,7 +166,7 @@ struct ContentView: View {
                     phaseTitle = ("History: none")
                 } else {
                 //SHOW PAST HISTORY TO USER
-                    print("record total: \(pastRecords.count) INDEX:\(currentExercise)")
+                    print("App: record total: \(pastRecords.count) INDEX:\(currentExercise)")
                     if (pastRecords.count > currentExercise) { //verify the history exists
                         let recordExercise = pastRecords[currentExercise]
                         phaseTitle = ("Last time: Reps:\(recordExercise.reps[currentSet-1]), Weight:\(recordExercise.weight[currentSet-1]) lbs,  \(recordExercise.exertionType[currentSet-1]):\(recordExercise.exertion[currentSet-1])")
@@ -176,9 +182,8 @@ struct ContentView: View {
             summaryText = ("Set \(currentSet): \(testWorkout.exercises[currentExercise].name), Reps: \(testWorkout.exercises[currentExercise].reps[currentSet-1]), Sets: \(testWorkout.exercises[currentExercise].sets)")
             
             
-        //REST TIMER INPUT
+        //REST TIMER INPUT: NOT USED CURRENTLY
         } else if (currentPhase == 3 && madeInputs > 3){
-            print("START TIMER")
             /*var i = 0
             let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ intervals in
                 print("timer: \(i)")
@@ -191,6 +196,30 @@ struct ContentView: View {
         
     }
     
+    /*This returns all variables and the screen to a default stat and workout can be started from the beginning.*/
+    func onQuitButtonTapped(){
+        print("App: quit workout")
+        
+        //reset all variable to an unstarted state.
+        currentSet = 1
+        currentPhase = 0
+        currentExercise = 0
+        userInput = ""
+        input1 = 0
+        input2 = 0
+        input3 = 0
+        summaryText = "test"
+        phaseTitle = "phase"
+        summaryShown = true
+        
+        madeInputs = 5
+        buttonConfirmText = "START"
+        currentRecord = [Exercise]()
+        
+        //update the screen to an unstarted state.
+        workoutDetails()
+    }
+    /*Handles phases and screen updates, along with writting to the current session variable */
     func onButtonTapped(){
         if (currentPhase == 5){
             return
@@ -204,8 +233,8 @@ struct ContentView: View {
                 //write to weight
                 
                 //indicates we haven't added the exercise to our record.
-                print("\(input1)\(input2)\(input3)")
-                guard let userInput = Double("\(input1)\(input2)\(input3)")
+                print("\(input3)\(input2)\(input1)")
+                guard let userInput = Double("\(input3)\(input2)\(input1)")
                     else {return}
                 if(currentSet == 1){
                     currentRecord.append(Exercise(Name: testWorkout.exercises[currentExercise].name, Sets: currentSet, Reps: [], Weight: [userInput], Exertion: [], ExertionType: testWorkout.exercises[currentExercise].exertionType, RestMin: [], RestSec: [], Type: testWorkout.exercises[currentExercise].type))
@@ -217,25 +246,34 @@ struct ContentView: View {
                 }
                 madeInputs = 2
                 phaseTitle = "Input Reps"
+                input1 = 0
+                input2 = 0
+                input3 = 0
                 return
                 
             //  WRITE REPS
             } else if (madeInputs == 2){
-                guard let userInput = Int("\(input1)\(input2)\(input3)") else {return}
+                guard let userInput = Int("\(input3)\(input2)\(input1)") else {return}
                 currentRecord[currentExercise].reps.append(userInput)
                 madeInputs = 3
-                phaseTitle = "Input RPE"
+                phaseTitle = "Input \(testWorkout.exercises[currentExercise].exertionType[currentSet-1])"
+                input1 = 0
+                input2 = 0
+                input3 = 0
                 return
                 
             }else if (madeInputs == 3){
-                let userInput = "\(input1)\(input2)\(input3)"
+                let userInput = "\(input2)\(input1)"
                 currentRecord[currentExercise].exertion.append(userInput)
                 madeInputs = 4
                 phaseTitle = "Last Set Summary"
                 summaryShown = true
-                summaryText = "Sets:\(currentSet), Reps\(currentRecord[currentExercise].reps), \(currentRecord[currentExercise].exertion)"
+                summaryText = "Sets:\(currentSet)\nReps\(currentRecord[currentExercise].reps)\nWeight\(currentRecord[currentExercise].weight)lbs.\nExertion\(currentRecord[currentExercise].exertion)"
                 
                 buttonConfirmText = "CONFIRM"
+                input1 = 0
+                input2 = 0
+                input3 = 0
                 return
                 
             }else if (madeInputs == 4){
@@ -247,14 +285,15 @@ struct ContentView: View {
                     currentSet = 1
                 }
                 if (currentExercise >= testWorkout.exercises.count){
-                    print("WORKOUT FINISHED")
+                    print("App: WORKOUT FINISHED")
                     currentPhase = 5
                     summaryShown = true
                     
                     var finalSummary = ""
-                    for (_, obj) in currentRecord.enumerated(){
-                        finalSummary = ("\(finalSummary) | \(obj)")
+                    for (_, _exercise) in currentRecord.enumerated(){
+                        finalSummary = "\(finalSummary)\(_exercise.name):\nReps:\n\(_exercise.reps)\n\n Weight:\n\(_exercise.weight)lbs.\n\nRPE-Type:\n\(_exercise.exertionType)\n\nRPE:\(_exercise.exertion)\n\n\n"
                     }
+                    phaseTitle = "Workout Summary"
                     summaryText = finalSummary
                     return
                 }
@@ -265,10 +304,13 @@ struct ContentView: View {
                 phaseTitle = "Input Weight" //This is our starting point for this sub phase.
                 madeInputs = 1
                 buttonConfirmText = ("NEXT")
+                input1 = 0
+                input2 = 0
+                input3 = 0
                 return
             }
         }
-        updateWorkout()
+        workoutDetails()
         print("phase@\(currentPhase)")
     }
     
