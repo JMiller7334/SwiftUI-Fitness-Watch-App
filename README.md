@@ -2,7 +2,7 @@
 
 ## Overview:
 Prototype wearable(watch-OS app) I designed as a concept companion app to my published app: Iron Journal.
-I decided not go the route of a wearable to act as an addition to my app for the time being so this acts as demo.
+I decided not go the route of a wearable to act as an addition to my app for the time being so this acts as a demo.
 
  + Written in Swift in Xcode using SwiftUI
  + MVVM architecture    
