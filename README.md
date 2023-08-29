@@ -10,7 +10,7 @@ I decided not go the route of a wearable to act as an addition to my app for the
  + Session/workout deta updates as inputs are made. This data is displayed to the user as they progress through the workout.
  + Hardcoded history data and workout data - due to app not being connected to a database of any kind.
    + Hardcoded workout can be changed(via code) and the app will adapt.
-   + App adapts to whatever number exercises and sets that are configured to the workout class(testWorkout).
+   + App adapts to whatever number of exercises and sets that are configured to the workout class(testWorkout).
   
 ## Project Goals:
 + Practice developing wearable/watch apps.
