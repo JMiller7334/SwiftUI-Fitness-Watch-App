@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F4CF3E72A9DB20C006EF705 /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4CF3E62A9DB20C006EF705 /* WorkoutModel.swift */; };
+		3F4CF3E92A9DB246006EF705 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4CF3E82A9DB246006EF705 /* ExerciseModel.swift */; };
+		3F4CF3EB2A9DB727006EF705 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4CF3EA2A9DB727006EF705 /* ContentViewModel.swift */; };
 		3FE9BC8729A85B0100EC0288 /* MAD257-GymTrackerWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3FE9BC8629A85B0100EC0288 /* MAD257-GymTrackerWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3FE9BC8C29A85B0100EC0288 /* MAD257_GymTrackerWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9BC8B29A85B0100EC0288 /* MAD257_GymTrackerWatchApp.swift */; };
 		3FE9BC8E29A85B0100EC0288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9BC8D29A85B0100EC0288 /* ContentView.swift */; };
@@ -56,6 +59,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F4CF3E62A9DB20C006EF705 /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
+		3F4CF3E82A9DB246006EF705 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
+		3F4CF3EA2A9DB727006EF705 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		3FE9BC8029A85B0100EC0288 /* MAD257-GymTrackerWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAD257-GymTrackerWatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE9BC8629A85B0100EC0288 /* MAD257-GymTrackerWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAD257-GymTrackerWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE9BC8B29A85B0100EC0288 /* MAD257_GymTrackerWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAD257_GymTrackerWatchApp.swift; sourceTree = "<group>"; };
@@ -94,6 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F4CF3E52A9DB1B5006EF705 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F4CF3E62A9DB20C006EF705 /* WorkoutModel.swift */,
+				3F4CF3E82A9DB246006EF705 /* ExerciseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3F4CF3EC2A9DC898006EF705 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3F4CF3EA2A9DB727006EF705 /* ContentViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		3FE9BC7929A85B0100EC0288 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +141,8 @@
 		3FE9BC8A29A85B0100EC0288 /* MAD257-GymTrackerWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				3F4CF3EC2A9DC898006EF705 /* ViewModels */,
+				3F4CF3E52A9DB1B5006EF705 /* Models */,
 				3FE9BC8B29A85B0100EC0288 /* MAD257_GymTrackerWatchApp.swift */,
 				3FE9BC8D29A85B0100EC0288 /* ContentView.swift */,
 				3FE9BC8F29A85B0300EC0288 /* Assets.xcassets */,
@@ -310,7 +335,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FE9BC8E29A85B0100EC0288 /* ContentView.swift in Sources */,
+				3F4CF3E72A9DB20C006EF705 /* WorkoutModel.swift in Sources */,
 				3FE9BC8C29A85B0100EC0288 /* MAD257_GymTrackerWatchApp.swift in Sources */,
+				3F4CF3E92A9DB246006EF705 /* ExerciseModel.swift in Sources */,
+				3F4CF3EB2A9DB727006EF705 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
