@@ -8,13 +8,13 @@ I decided not go the route of a wearable to act as an addition to my app for the
  + MVVM architecture    
  + Demo walks user through a workout. Utilizes picker view to prompt user inputs.
  + Session/workout deta updates as inputs are made. Is displayed to the user as they progress through the workout.
- + Hardcoded history data and workout data - due to app not being connected to a database of anykind.
-   + Number of exercises/sets/etc can be changed; app will adapt.
-   + Any number of exercises or sets my be used.
+ + Hardcoded history data and workout data - due to app not being connected to a database of any kind.
+   + Hardcoded workout can be changed(via code) and the app will adapt.
+   + App adapts to whatever number exercises and sets that are configured to the workout class(testWorkout).
   
 ## Project Goals:
-+ Practice developing wearable apps.
-+ Further familiarize myself with swfitUI.
++ Practice developing wearable/watch apps.
++ Further familiarize myself with SwiftUI.
 + Better familiarize myself with MVVM architecture.
-+ Create a concept for a potential addon to my published app.
++ Create a concept for a potential addon to my published app. 
 
