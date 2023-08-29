@@ -22,9 +22,8 @@ struct Exercise{
     var restSec: [Int]
     var type: String
     
-    
-    /*This is used pulling class data down from firebase. Currently this app does not use firebase, but I have left this
-     in here in case I change that in the future.**/
+
+    /**asDictionary: is used when saving the struct to Firebase. Handles converting the struct to a dictionary so that firebase can accept it.**/
     var asDictionary : [String:Any] {
         let mirror = Mirror(reflecting: self)
         let dict = Dictionary(uniqueKeysWithValues: mirror.children.lazy.map({ (label:String?, value:Any) -> (String, Any)? in

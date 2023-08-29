@@ -12,8 +12,7 @@ struct Workout{
     var name:String
     var exercises:[Exercise]
     
-    /**asDictionary is how I've built workout classes after the data for the workout is retrieved by firebase.
-     This currently does not connect to any database but I have left this in here in case I change that later.**/
+    /**asDictionary: is used when saving the struct to Firebase. Handles converting the struct to a dictionary so that firebase can accept it.**/
     var asDictionary : [String:Any] {
         let mirror = Mirror(reflecting: self)
         let dict = Dictionary(uniqueKeysWithValues: mirror.children.lazy.map({ (label:String?, value:Any) -> (String, Any)? in
