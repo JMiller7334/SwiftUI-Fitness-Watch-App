@@ -13,7 +13,8 @@ I decided not go the route of a wearable to act as an addition to my app for the
    + Any number of exercises or sets my be used.
   
 ## Project Goals:
-+ Further familiarize myself with swfit UI
-+ Better familiarize myself with MVVM
++ Practice developing wearable apps.
++ Further familiarize myself with swfitUI.
++ Better familiarize myself with MVVM architecture.
 + Create a concept for a potential addon to my published app.
 
