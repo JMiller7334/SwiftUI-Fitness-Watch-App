@@ -4,6 +4,7 @@
 Prototype wearable(watch-OS app) I designed as a concept companion app to my published app: Iron Journal.
 I decided not go the route of a wearable to act as an addition to my app for the time being so this acts as a demo.
 
+## App Information:
  + MVVM architecture   
  + Written in Swift in Xcode using SwiftUI 
  + Demo walks user through a workout. Utilizes picker view to prompt user inputs.
