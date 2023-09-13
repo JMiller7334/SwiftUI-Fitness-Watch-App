@@ -4,7 +4,7 @@
 Prototype wearable(watch-OS app) I designed as a concept companion app to my published app: Iron Journal.
 I decided not go the route of a wearable to act as an addition to my app for the time being so this acts as a demo.
 
-## Github Links:
+## Github Code Links(This Project):
 Below are some links that take you right to the code of this repository.
 + [Code for View](https://github.com/JMiller7334/SwiftUI-Fitness-Watch-App/blob/main/MAD257-GymTrackerWatch%20Watch%20App/ContentView.swift)
 + [Code for ViewModel](https://github.com/JMiller7334/SwiftUI-Fitness-Watch-App/blob/main/MAD257-GymTrackerWatch%20Watch%20App/ViewModels/ContentViewModel.swift)
